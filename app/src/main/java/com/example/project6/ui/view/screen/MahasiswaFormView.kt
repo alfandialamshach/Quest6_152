@@ -40,15 +40,18 @@ import com.example.project6.R
 import com.example.project6.model.Mahasiswa
 
 
-@Preview(showBackground = true)
+
 @Composable
-fun MahasiswaFormView() {
+fun MahasiswaFormView(
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onBackButtonClicked: () -> Unit
+) {
 
     var nama by remember { mutableStateOf("") };
     var nim by remember { mutableStateOf("") };
     var email by remember { mutableStateOf("") };
 
-
+    var listData: MutableList<String> = mutableListOf(nim, nama, email)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,7 +84,7 @@ fun MahasiswaFormView() {
                 )
             }
         }
-        Spacer(modifier = Modifier.padding(lop - 16.dp))
+        Spacer(modifier = Modifier.padding(top = 16.dp))
         Box(
             modifier = Modifier
                 .background(
@@ -113,7 +116,6 @@ fun MahasiswaFormView() {
 
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
                     value = nim,
                     onValueChange = { nim = it },
                     label = { Text(text = "Nomer Induk Mahasiswa") },
@@ -130,7 +132,6 @@ fun MahasiswaFormView() {
 
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
                     value = nama,
                     onValueChange = { nama = it },
                     label = { Text(text = "Nama Mahasiswa") },
@@ -147,7 +148,6 @@ fun MahasiswaFormView() {
 
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(50.dp),
                     value = email,
                     onValueChange = { email = it },
                     label = { Text(text = "Email Mahasiswa") },
@@ -166,10 +166,10 @@ fun MahasiswaFormView() {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Button(onClick = {}) {
+                    Button(onClick = {onBackButtonClicked()}) {
                         Text(text = "Kembali")
                     }
-                    Button(onClick = {}) {
+                    Button(onClick = {onSubmitButtonClicked}) {
                         Text(text = "Simpan")
                     }
                 }
