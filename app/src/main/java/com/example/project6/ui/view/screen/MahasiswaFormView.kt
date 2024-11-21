@@ -42,21 +42,23 @@ import com.example.project6.model.Mahasiswa
 
 @Preview(showBackground = true)
 @Composable
-fun MahasiswaFormView(){
+fun MahasiswaFormView() {
 
-    var nama by remember { mutableStateOf("")};
-    var nim by remember { mutableStateOf("")};
-    var email by remember { mutableStateOf("")};
+    var nama by remember { mutableStateOf("") };
+    var nim by remember { mutableStateOf("") };
+    var email by remember { mutableStateOf("") };
 
 
-    Column (modifier = Modifier
-        .fillMaxSize()
-        .background(color = colorResource(id = R.color.primary))
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colorResource(id = R.color.primary))
     ) {
-        Row (modifier = Modifier.padding(40.dp),
+        Row(
+            modifier = Modifier.padding(40.dp),
             verticalAlignment = Alignment.CenterVertically,
 
-        ){
+            ) {
             Image(
                 painter = painterResource(
                     id = R.drawable.img
@@ -79,84 +81,99 @@ fun MahasiswaFormView(){
                 )
             }
         }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color.White, shape = RoundedCornerShape
-                (
-                topEnd = 15.dp,
-                topStart = 15.dp)
-            )
-    ) {
-Column (modifier = Modifier
-    .fillMaxWidth()
-    .padding(16.dp),
-    horizontalAlignment = Alignment.CenterHorizontally) {
-    Text(
-        text = "Masukkan Data Kamu",
-        fontWeight = FontWeight.Bold,
-        fontSize = 19.sp
+        Spacer(modifier = Modifier.padding(lop - 16.dp))
+        Box(
+            modifier = Modifier
+                .background(
+                    color = Color.White, shape = RoundedCornerShape
+                        (
+                        topEnd = 15.dp,
+                        topStart = 15.dp
+                    )
+                )
+                .fillMaxSize()
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Masukkan Data Kamu",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 19.sp
 
-    )
-    Text(
-        text = "Masukkan Data Kamu",
-        fontWeight = FontWeight.Light
-    )
-    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(50.dp),
-        value = nim,
-        onValueChange = {nim=it},
-        label = {Text(text ="Nomer Induk Mahasiswa")},
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.Info,
-                contentDescription = ""
-            )
+                )
+                Text(
+                    text = "Isi sesuai data yang kamu daftarkan",
+                    fontWeight = FontWeight.Light
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = nim,
+                    onValueChange = { nim = it },
+                    label = { Text(text = "Nomer Induk Mahasiswa") },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Info,
+                            contentDescription = ""
+                        )
+                    },
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp)
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = nama,
+                    onValueChange = { nama = it },
+                    label = { Text(text = "Nama Mahasiswa") },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Person,
+                            contentDescription = ""
+                        )
+                    },
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp)
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+
+                OutlinedTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(50.dp),
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text(text = "Email Mahasiswa") },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Filled.Email,
+                            contentDescription = ""
+                        )
+                    },
+                    singleLine = true,
+                    shape = RoundedCornerShape(50.dp)
+                )
+                Spacer(modifier = Modifier.padding(16.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Button(onClick = {}) {
+                        Text(text = "Kembali")
+                    }
+                    Button(onClick = {}) {
+                        Text(text = "Simpan")
+                    }
+                }
+            }
         }
-    )
-    Spacer(modifier = Modifier.padding(4.dp))
-
-    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(50.dp),
-        value = nama,
-        onValueChange = {nama=it},
-        label = {Text(text ="Nama")},
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.Person,
-                contentDescription = ""
-            )
-        }
-    )
-    Spacer(modifier = Modifier.padding(4.dp))
-
-    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(50.dp),
-        value = email,
-        onValueChange = {email=it},
-        label = {Text(text ="Email")},
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Filled.Email,
-                contentDescription = ""
-            )
-        }
-    )
-    Spacer(modifier = Modifier.padding(16.dp))
-
-    Row(modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Button(onClick = {}) {
-            Text(text = "Kembali")
-        }
-        Button(onClick = {}) {
-            Text(text = "Simpan")
-        }
-    }
-}
-
-
-    }
     }
 }
