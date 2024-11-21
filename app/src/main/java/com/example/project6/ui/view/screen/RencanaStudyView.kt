@@ -2,6 +2,7 @@ package com.example.project6.ui.view.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialogDefaults.shape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.project6.R
 import com.example.project6.data.MataKuliah
+import com.example.project6.data.RuangKelas
 import com.example.project6.model.Mahasiswa
 import com.example.project6.ui.view.widget.DynamicSelectedTextField
 
@@ -121,6 +128,59 @@ fun RencanaStudyView(
                         chosenDropdwn = it
                     }
                 )
+                Spacer(modifier = Modifier.padding(8.dp))
+                HorizontalDivider()
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text(
+                    text = "Silakan Pilih kelas dari Matakuliah yang anda inginkan",
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Light
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Row (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    RuangKelas.kelas.forEach { data ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = pilihanKelas == data,
+                                onClick = { pilihanKelas = data }
+                            )
+                            Text(data)
+                        }
+                    }
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    HorizontalDivider()
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text(text = "Klausul Persetujuan Mahasiswa", fontWeight = FontWeight.Bold)
+                    Row (verticalAlignment = Alignment.CenterVertically){
+                        Checkbox(
+                            checked= checked,
+                            onCheckedChange = {checked = it},
+                            enabled = chosenDropdwn.isNotBlank() &&pilihanKelas.isNotBlank()
+
+                        )
+                        Text(
+                            text = "Saya menyetujui setiap pernyataan yang ada tanpa ada paksaan dari pihak manapun.",
+                            fontWeight = FontWeight.Light, fontSize = 10.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Row (
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ){
+                        Button(onClick = {onBackButtonClicked}) {
+                            Text(text = "Kembali")
+                        }
+                        Button(
+                            onClick = {onSubmitButtonClicked(listdata)}, enabled = checked
+                        ) {
+                            Text(text = "Simpan")
+                        }
+                    }
+                }
             }
         }
     }
