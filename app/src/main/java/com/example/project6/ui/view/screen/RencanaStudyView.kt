@@ -65,7 +65,7 @@ fun RencanaStudyView(
                 .padding(16.dp), verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = R.drawable.img),
+                painter = painterResource(id = R.drawable.umy),
                 contentDescription = "",
                 modifier = Modifier
                     .clip(shape = CircleShape)
@@ -92,7 +92,7 @@ fun RencanaStudyView(
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = "",
-                    tint = Color.Blue
+                    tint = Color.White
                 )
             }
         }

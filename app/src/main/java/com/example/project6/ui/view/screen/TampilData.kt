@@ -51,7 +51,7 @@ fun TampilData(
             verticalAlignment = Alignment.CenterVertically
         ){
             Image(
-                painter = painterResource(id = R.drawable.img),
+                painter = painterResource(id = R.drawable.umy),
                 contentDescription = "",
                 modifier = Modifier
                     .clip(shape = CircleShape)
@@ -76,7 +76,7 @@ fun TampilData(
                 Icon(
                     imageVector = Icons.Filled.Notifications,
                     contentDescription = "",
-                    tint = Color.Blue
+                    tint = Color.White
                 )
             }
         }

@@ -64,7 +64,7 @@ fun MahasiswaFormView(
             ) {
             Image(
                 painter = painterResource(
-                    id = R.drawable.img
+                    id = R.drawable.umy
                 ),
                 contentDescription = ""
             )

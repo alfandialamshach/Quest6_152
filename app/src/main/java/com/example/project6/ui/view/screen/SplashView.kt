@@ -32,7 +32,7 @@ fun SplashView(
     )
     {
 Image(
-    painter = painterResource(R.drawable.img),
+    painter = painterResource(R.drawable.umy),
     contentDescription = "",
     modifier = Modifier.size(150.dp))
         Button(
