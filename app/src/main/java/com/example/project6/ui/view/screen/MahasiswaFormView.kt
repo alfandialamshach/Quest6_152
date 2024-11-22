@@ -43,7 +43,7 @@ import com.example.project6.model.Mahasiswa
 
 @Composable
 fun MahasiswaFormView(
-    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    onSimpanButtonClicked: (MutableList<String>) -> Unit,
     onBackButtonClicked: () -> Unit
 ) {
 
@@ -169,7 +169,7 @@ fun MahasiswaFormView(
                     Button(onClick = {onBackButtonClicked()}) {
                         Text(text = "Kembali")
                     }
-                    Button(onClick = {onSubmitButtonClicked}) {
+                    Button(onClick = {onSimpanButtonClicked(listData)}) {
                         Text(text = "Simpan")
                     }
                 }
