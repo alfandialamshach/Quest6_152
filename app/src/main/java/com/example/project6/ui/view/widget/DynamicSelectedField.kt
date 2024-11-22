@@ -22,7 +22,7 @@ fun DynamicSelectedTextField(
     selectedValue: String,
     options: List<String>,
     label: String,
-    onValueChangeEvent: (String) -> Unit,
+    onValueChangedEvent: (String) -> Unit,
     modifier: Modifier =Modifier
 ){
     var expanded by remember { mutableStateOf(false)}
@@ -53,7 +53,7 @@ fun DynamicSelectedTextField(
                     text = { Text(text = options)},
                     onClick = {
                         expanded = false
-                        onValueChangeEvent
+                        onValueChangedEvent(options)
                     }
                 )
             }
