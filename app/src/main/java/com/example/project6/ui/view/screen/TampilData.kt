@@ -138,7 +138,7 @@ fun TampilData(
                     horizontalArrangement = Arrangement.Center
                 ){
                     Button(
-                        onClick = {onBackButtonClicked}
+                        onClick = {onBackButtonClicked()}
                     ) {
                         Text("Kembali ke Halaman Utama")
                     }
