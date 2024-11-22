@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -106,7 +107,42 @@ fun TampilData(
                     fontWeight = FontWeight.Bold,
                     fontSize = 15.sp
                 )
-
+                Spacer(modifier = Modifier.padding(8.dp))
+                HasilData(
+                    Judul  = "Nama",
+                    Isinya = mahasiswa.nama
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+                HasilData(
+                    Judul  = "NIM",
+                    Isinya = mahasiswa.nim
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+                HasilData(
+                    Judul  = "Email",
+                    Isinya = mahasiswa.email
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+                HasilData(
+                    Judul  = "Mata Kuliah",
+                    Isinya = rencanaStudi.namaMK
+                )
+                Spacer(modifier = Modifier.padding(4.dp))
+                HasilData(
+                    Judul  = "Kelas",
+                    Isinya = rencanaStudi.kelas
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Row  (
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    Button(
+                        onClick = {onBackButtonClicked}
+                    ) {
+                        Text("Kembali ke Halaman Utama")
+                    }
+                }
             }
         }
     }
